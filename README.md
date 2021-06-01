@@ -7,4 +7,8 @@ Auction web app
 </div>
 
 ### About the project
-<a href="https://trello.com/b/vaq908Ni/falcon">Trello board</a>
+<ul>
+  <li>
+    <a href="https://trello.com/b/vaq908Ni/falcon" target="_blank">Trello board</a>
+  </li>
+</ul>
