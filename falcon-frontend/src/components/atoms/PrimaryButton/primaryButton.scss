@@ -1,0 +1,13 @@
+.primaryButton {
+  background-color: black;
+  width: 5.5em;
+  height: 2.5em;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  border-color: transparent;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}

@@ -1,14 +1,18 @@
-import React, { FC } from "react";
+import { FC } from "react";
+import { Link } from "react-router-dom";
 import "./navbarItem.scss";
 
 interface ItemProps {
   text: string;
+  url: string;
 }
 
-const NavbarItem: FC<ItemProps> = ({ text }: ItemProps) => {
+const NavbarItem: FC<ItemProps> = ({ text, url }: ItemProps) => {
   return (
     <>
-      <div className="item">{text}</div>
+      <Link to={url} className="item">
+        {text}
+      </Link>
     </>
   );
 };
