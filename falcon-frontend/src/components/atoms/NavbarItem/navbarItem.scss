@@ -1,0 +1,14 @@
+.item {
+  text-align: center;
+  color: white;
+  border: 1px solid black;
+  border-radius: 15%;
+  width: fit-content;
+  display: inline-block;
+  padding: 0.2em 3em;
+
+  &:hover {
+    font-weight: 600;
+    cursor: pointer;
+  }
+}
