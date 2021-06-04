@@ -3,6 +3,7 @@ import NavbarItem from "../../atoms/NavbarItem/NavbarItem";
 import PrimaryButton from "../../atoms/PrimaryButton/PrimaryButton";
 import SecondaryButton from "../../atoms/SecondaryButton/SecondaryButton";
 import Logo from "../../atoms/Logo/Logo";
+import { Link } from "react-router-dom";
 import "./navbar.scss";
 
 const Navbar: FC = () => {
@@ -13,8 +14,12 @@ const Navbar: FC = () => {
         <NavbarItem url="/" text="Home" />
         <NavbarItem url="/buy" text="Buy" />
         <NavbarItem url="/sell" text="Sell" />
-        <PrimaryButton text="Log In" />
-        <SecondaryButton text="Sign Up" />
+        <Link to="/login">
+          <PrimaryButton text="Log In" />
+        </Link>
+        <Link to="/signup">
+          <SecondaryButton text="Sign Up" />
+        </Link>
       </div>
     </div>
   );
