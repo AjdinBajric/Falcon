@@ -1,0 +1,49 @@
+.fields {
+  padding: 1.2em;
+  display: inline;
+  width: 55%;
+}
+
+.form {
+  margin: auto;
+  width: 60%;
+  box-shadow: black;
+  display: flex;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.65);
+  padding: 0;
+}
+
+.image {
+  width: 100%;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+.signWord {
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  margin: 0;
+  font-size: 2.5em;
+  color: white;
+}
+
+.upWord {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  margin: 0 0 0.5em 0;
+  font-size: 2.5em;
+  color: white;
+}
+
+.title {
+  border-left: 0.35em solid #f6d600;
+  padding-left: 0.3em;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  margin: 2em 0 0 0;
+}

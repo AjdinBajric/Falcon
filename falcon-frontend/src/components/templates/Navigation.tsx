@@ -3,6 +3,8 @@ import { Switch, Route } from "react-router-dom";
 import Homepage from "../../pages/Homepage";
 import SellPage from "../../pages/SellPage";
 import BuyPage from "../../pages/BuyPage";
+import SignInPage from "../../pages/SignInPage";
+import SignUpPage from "../../pages/SignUpPage/SignUpPage";
 
 const Navigation: FC = () => {
   return (
@@ -20,6 +22,16 @@ const Navigation: FC = () => {
       <Switch>
         <Route exact path="/sell">
           <SellPage />
+        </Route>
+      </Switch>
+      <Switch>
+        <Route path="/login">
+          <SignInPage />
+        </Route>
+      </Switch>
+      <Switch>
+        <Route path="/signup">
+          <SignUpPage />
         </Route>
       </Switch>
     </>
