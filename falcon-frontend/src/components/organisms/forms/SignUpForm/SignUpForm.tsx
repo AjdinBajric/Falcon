@@ -4,6 +4,12 @@ import PrimaryButton from "../../../atoms/PrimaryButton/PrimaryButton";
 import "./signupform.scss";
 
 const SignUpForm: FC = () => {
+  const emailValidator = (text: string): string | undefined => {
+    if (text.indexOf("@") == -1) {
+      return "Please enter a valid email";
+    }
+  };
+
   return (
     <div className="form">
       <div className="fields">
@@ -13,14 +19,14 @@ const SignUpForm: FC = () => {
         </div>
         <TextField label="Full Name" />
         <TextField label="Email" />
-        <TextField label="Password" />
-        <TextField label="Confirm password" />
+        <TextField label="Password" type="password" />
+        <TextField label="Confirm password" type="password" />
 
         <div className="button">
           <PrimaryButton text="Sign Up" />
         </div>
       </div>
-      <div style={{ padding: "0" }}>
+      <div>
         <img
           src="images/signupFormImage.jpg"
           alt="falconImage"

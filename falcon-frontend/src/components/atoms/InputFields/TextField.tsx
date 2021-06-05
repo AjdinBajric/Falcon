@@ -3,13 +3,16 @@ import "./textField.scss";
 
 interface ITextField {
   label: string;
+  type?: string;
+  validator?: (text: string) => string;
 }
 
-const TextField: FC<ITextField> = ({ label }: ITextField) => {
+const TextField: FC<ITextField> = ({ label, type }: ITextField) => {
   return (
     <>
       <label className="label">{label}</label>
-      <input className="inputField" />
+      <input className="inputField" type={type} />
+      <p></p>
     </>
   );
 };
