@@ -3,8 +3,8 @@ import { Switch, Route } from "react-router-dom";
 import Homepage from "../../pages/Homepage";
 import SellPage from "../../pages/SellPage";
 import BuyPage from "../../pages/BuyPage";
-import SignInPage from "../../pages/SignInPage";
 import SignUpPage from "../../pages/SignUpPage/SignUpPage";
+import LogInPage from "../../pages/LogInPage/LogInPage";
 
 const Navigation: FC = () => {
   return (
@@ -26,7 +26,7 @@ const Navigation: FC = () => {
       </Switch>
       <Switch>
         <Route path="/login">
-          <SignInPage />
+          <LogInPage />
         </Route>
       </Switch>
       <Switch>

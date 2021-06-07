@@ -1,0 +1,52 @@
+.LoginForm {
+  margin: auto;
+  width: 30%;
+  box-shadow: black;
+  display: flex;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 0;
+
+  &__fields {
+    padding: 1.2em;
+    display: inline;
+    width: 100%;
+
+    &__validatorText {
+      color: #fe5c5c;
+      font-size: small;
+      font-family: "Roboto", sans-serif;
+      margin: 0.05em;
+      padding: 0;
+    }
+
+    &__button {
+      display: flex;
+      justify-content: center;
+      margin: 2em 0 0 0;
+    }
+
+    &__title {
+      border-left: 0.35em solid #f6d600;
+      padding-left: 0.3em;
+
+      &__signWord {
+        font-family: "Roboto", sans-serif;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        margin: 0;
+        font-size: 2.5em;
+        color: white;
+      }
+
+      &__upWord {
+        font-family: "Roboto", sans-serif;
+        font-weight: 400;
+        letter-spacing: 0.05em;
+        margin: 0 0 0.5em 0;
+        font-size: 2.5em;
+        color: white;
+      }
+    }
+  }
+}
