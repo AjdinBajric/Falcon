@@ -3,11 +3,17 @@ import "./primaryButton.scss";
 
 interface IPrimaryButton {
   text: string;
+  onClick: () => void;
 }
-const PrimaryButton: FC<IPrimaryButton> = ({ text }: IPrimaryButton) => {
+const PrimaryButton: FC<IPrimaryButton> = ({
+  text,
+  onClick,
+}: IPrimaryButton) => {
   return (
     <>
-      <button className="primaryButton">{text}</button>
+      <button className="primaryButton" onClick={onClick}>
+        {text}
+      </button>
     </>
   );
 };

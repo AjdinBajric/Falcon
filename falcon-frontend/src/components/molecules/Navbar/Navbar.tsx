@@ -15,10 +15,13 @@ const Navbar: FC = () => {
         <NavbarItem url="/buy" text="Buy" />
         <NavbarItem url="/sell" text="Sell" />
         <Link to="/login">
-          <PrimaryButton text="Log In" />
+          <PrimaryButton text="Log In" onClick={() => console.log("Clicked")} />
         </Link>
         <Link to="/signup">
-          <SecondaryButton text="Sign Up" />
+          <SecondaryButton
+            text="Sign Up"
+            onClick={() => console.log("Clicked")}
+          />
         </Link>
       </div>
     </div>

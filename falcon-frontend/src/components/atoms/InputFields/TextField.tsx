@@ -2,17 +2,22 @@ import { FC } from "react";
 import "./textField.scss";
 
 interface ITextField {
-  label: string;
-  type?: string;
-  validator?: (text: string) => string;
+  value?: string;
+  onChange: (value: string) => void;
+  name?: string;
+  placeholder?: string;
+  autoFocus?: boolean;
+  type?: "email" | "password" | "text";
 }
 
-const TextField: FC<ITextField> = ({ label, type }: ITextField) => {
+const TextField: FC<ITextField> = ({ onChange, ...rest }: ITextField) => {
   return (
     <>
-      <label className="label">{label}</label>
-      <input className="inputField" type={type} />
-      <p></p>
+      <input
+        className="inputField"
+        onChange={({ target: { value } }) => onChange(value)}
+        {...rest}
+      />
     </>
   );
 };
