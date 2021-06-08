@@ -1,6 +1,7 @@
-import { FC, useState } from "react";
+import { FC, useState, useEffect } from "react";
 import TextField from "../../../atoms/InputFields/TextField";
 import PrimaryButton from "../../../atoms/PrimaryButton/PrimaryButton";
+import { usersAPI } from "../../../../api";
 import "./signupform.scss";
 
 const SignUpForm: FC = () => {
@@ -8,6 +9,7 @@ const SignUpForm: FC = () => {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [confirmationPassword, setConfirmationPassword] = useState("");
+  const [allUsers, setAllUsers] = useState();
 
   const [errors, setErrors] = useState({
     email: "",
@@ -18,6 +20,16 @@ const SignUpForm: FC = () => {
   const isValidEmail = (value: string) => {
     return /^[\w\-.+]+@[a-zA-Z0-9.-]+.[a-zA-z0-9]{2,5}$/.test(value);
   };
+
+  const getAllUsers = async () => {
+    const response = await usersAPI.getAllUsers();
+    setAllUsers(response);
+  };
+  useEffect(() => {
+    getAllUsers();
+  }, []);
+
+  console.log("All users", allUsers);
 
   const validateForm = () => {
     if (!isValidEmail(email)) {
