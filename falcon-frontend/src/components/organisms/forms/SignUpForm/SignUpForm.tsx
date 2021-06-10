@@ -21,10 +21,26 @@ const SignUpForm: FC = () => {
     return /^[\w\-.+]+@[a-zA-Z0-9.-]+.[a-zA-z0-9]{2,5}$/.test(value);
   };
 
+  const resetFields = () => {
+    setName("");
+    setEmail("");
+    setPassword("");
+    setConfirmationPassword("");
+  };
+
   const getAllUsers = async () => {
     const response = await usersAPI.getAllUsers();
     setAllUsers(response);
   };
+
+  const signUp = async () => {
+    const response = await usersAPI.signUp(name, email, password);
+    if (response === 201) {
+      alert("You have succesfully signed up!");
+      resetFields();
+    }
+  };
+
   useEffect(() => {
     getAllUsers();
   }, []);
@@ -69,6 +85,14 @@ const SignUpForm: FC = () => {
         password: "",
       }));
     }
+
+    if (
+      errors.email === "" &&
+      errors.password === "" &&
+      errors.confirmationPassword === ""
+    ) {
+      signUp();
+    }
   };
   return (
     <div className="form">
@@ -79,20 +103,25 @@ const SignUpForm: FC = () => {
         </div>
 
         <label className="label">Full Name</label>
-        <TextField onChange={(value) => setName(value)} />
+        <TextField onChange={(value) => setName(value)} value={name} />
 
         <label className="label">Email</label>
-        <TextField onChange={(value) => setEmail(value)} />
+        <TextField onChange={(value) => setEmail(value)} value={email} />
         <p className="validatorText">{errors.email}</p>
 
         <label className="label">Password</label>
-        <TextField type="password" onChange={(value) => setPassword(value)} />
+        <TextField
+          type="password"
+          onChange={(value) => setPassword(value)}
+          value={password}
+        />
         <p className="validatorText">{errors.password}</p>
 
         <label className="label">Confirm password</label>
         <TextField
           type="password"
           onChange={(value) => setConfirmationPassword(value)}
+          value={confirmationPassword}
         />
         <p className="validatorText">{errors.confirmationPassword}</p>
 

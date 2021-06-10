@@ -1,4 +1,3 @@
-const httpStatus = require("http-status");
 const { connectionString } = require("../config/config");
 const { Pool } = require("pg");
 
@@ -11,18 +10,33 @@ const getUsers = async () => {
   return response.rows;
 };
 
-const createUser = async (req, res) => {
-  const { name, email, hash, salt } = req;
+const createUser = async (body, res) => {
+  const { name, email, password } = body;
+  let hash = "asdadsadadsa";
+  let salt = "saaaaaa";
   const response = await pool.query(
     `INSERT INTO member(name, email, hash, salt) VALUES('${name}', '${email}', '${hash}', '${salt}')`
   );
 
   if (response.rowCount == 1) {
-    return req;
+    return body;
   }
+};
+
+const loginUser = async (body, res) => {
+  const { email, password } = body;
+  let hash = password;
+  const response = await pool.query(
+    `SELECT name 
+    FROM member
+    WHERE email='${email}' AND hash='${hash}'`
+  );
+
+  return response.rows[0];
 };
 
 module.exports = {
   getUsers,
   createUser,
+  loginUser,
 };

@@ -1,6 +1,7 @@
 import { FC, useState } from "react";
 import TextField from "../../../atoms/InputFields/TextField";
 import PrimaryButton from "../../../atoms/PrimaryButton/PrimaryButton";
+import { usersAPI } from "../../../../api";
 import "./loginForm.scss";
 
 const LogInForm: FC = () => {
@@ -16,6 +17,15 @@ const LogInForm: FC = () => {
     return /^[\w\-.+]+@[a-zA-Z0-9.-]+.[a-zA-z0-9]{2,5}$/.test(value);
   };
 
+  const resetFields = () => {
+    setEmail("");
+    setPassword("");
+  };
+
+  const loginUser = async () => {
+    const response = await usersAPI.logIn(email, password);
+    console.log(response);
+  };
   const validateForm = () => {
     if (!isValidEmail(email)) {
       setErrors((prevValues) => ({
@@ -28,6 +38,11 @@ const LogInForm: FC = () => {
         email: "",
       }));
     }
+    console.log(email, password);
+    if (loginUser()) {
+      resetFields();
+      alert("You have succefully logged in");
+    }
   };
   return (
     <div className="LoginForm">
@@ -38,12 +53,16 @@ const LogInForm: FC = () => {
         </div>
 
         <label className="LoginForm__fields__label">Email</label>
-        <TextField onChange={(value) => setEmail(value)} />
-        <p className="LoginForm__fieldsvalidatorText">{errors.email}</p>
+        <TextField onChange={(value) => setEmail(value)} value={email} />
+        <p className="LoginForm__fields__validatorText">{errors.email}</p>
 
         <label className="LoginForm__fields__label">Password</label>
-        <TextField type="password" onChange={(value) => setPassword(value)} />
-        <p className="LoginForm__fieldsvalidatorText">{errors.password}</p>
+        <TextField
+          type="password"
+          onChange={(value) => setPassword(value)}
+          value={password}
+        />
+        <p className="LoginForm__fields__validatorText">{errors.password}</p>
 
         <div className="LoginForm__fields__button">
           <PrimaryButton text="Sign In" onClick={validateForm} />
