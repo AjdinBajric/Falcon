@@ -2,7 +2,6 @@ const express = require("express");
 const { connectionString } = require("./config/config");
 const cors = require("cors");
 const routes = require("./routes");
-// const { Pool } = require("pg");
 
 const app = express();
 

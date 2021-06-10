@@ -8,11 +8,15 @@ const createUser = async (req, res) => {
 
 const getUsers = async (req, res) => {
   const users = await usersService.getUsers();
-  console.log("a", users);
   res.send(users);
 };
 
+const loginUser = async (req, res) => {
+  const user = await usersService.loginUser(req.body);
+  res.send(httpStatus[200]);
+};
 module.exports = {
   createUser,
   getUsers,
+  loginUser,
 };
