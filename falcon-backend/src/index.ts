@@ -21,7 +21,7 @@ app.use(session({ ...SESSION_OPTIONS, store: new RedisStore({ client }) }));
 
 app.get("/", (req, res) =>
   res.json({
-    message: "Hello",
+    message: "Works",
   })
 );
 
