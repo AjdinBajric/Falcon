@@ -1,6 +1,12 @@
 import { SessionOptions } from "express-session";
 import { IN_PROD } from ".";
 
+declare module "express-session" {
+  interface Session {
+    userId: string;
+  }
+}
+
 const HALF_HOUR = 1000 * 60 * 30;
 const {
   SESSION_SECRET = `This should be a secret`,
