@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { logIn } from "../auth";
-import { guest } from "../middleware";
+import { BadRequest } from "../errors";
+import { guest, catchAsync } from "../middleware";
 import Model from "../models/model";
 
 const router = Router();
@@ -11,25 +12,23 @@ const isUserRegistered = async (email: string): Promise<Boolean> => {
   return data.rows.length > 0;
 };
 
-router.post("/register", guest, async (req, res) => {
-  const { email, name, password } = req.body;
-  try {
+router.post(
+  "/register",
+  guest,
+  catchAsync(async (req, res) => {
+    const { email, name, password } = req.body;
+
     if (await isUserRegistered(email)) {
-      res.status(403).json({ message: "User is already registered." });
-    } else {
-      const data = await memberModel.customQuery(
-        `INSERT INTO member(name, email, hash, salt) VALUES('${name}', '${email}', '${password}', '${password}')`
-      );
-
-      logIn(req, email);
-
-      res.status(200).json({ email, name });
+      throw new BadRequest("Invalid email.");
     }
-  } catch (err) {
-    res
-      .status(403)
-      .json({ message: "An error has occured, please try again later." });
-  }
-});
+
+    const data = await memberModel.customQuery(
+      `INSERT INTO member(name, email, hash, salt) VALUES('${name}', '${email}', '${password}', '${password}')`
+    );
+
+    logIn(req, email);
+    res.status(200).json({ message: "OK" });
+  })
+);
 
 export default router;
