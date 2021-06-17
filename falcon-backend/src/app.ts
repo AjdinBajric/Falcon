@@ -1,8 +1,8 @@
-import express, { NextFunction, Request, Response } from "express";
+import express from "express";
 import session, { Store } from "express-session";
 import { SESSION_OPTIONS } from "./config";
 import { internalServerError, notFound } from "./middleware";
-import { register } from "./routes";
+import { login, register } from "./routes";
 
 export const createApp = (store: Store) => {
   const app = express();
@@ -12,6 +12,8 @@ export const createApp = (store: Store) => {
   app.use(session({ ...SESSION_OPTIONS, store }));
 
   app.use(register);
+
+  app.use(login);
 
   app.use(notFound);
 
